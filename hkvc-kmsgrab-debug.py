@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # KMSGrab external format_modifier, as I am unable to get ffmpeg to do it.
-# v20200624IST0004, HanishKVC
+# v20200624IST0024, HanishKVC
 #
 
 import os
@@ -25,3 +25,13 @@ b10=b.reshape(16200,128)
 plt.matshow(b10[0:400,:])
 plt.show()
 
+1920/128
+15*8
+c=np.zeros((1024,128))
+for y in range(1,100):
+  i= y*120
+  j= y*8
+  print(y,i,j)
+  c[j:j+8,:]=b10[i:i+8,:]
+plt.matshow(c)
+plt.show()
