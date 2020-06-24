@@ -40,5 +40,10 @@ for y in range(0,tCols):
       continue
     c[j:j+VSET,x*HSET:x*HSET+HSET]=b10[i:i+VSET,:]
 
-plt.matshow(c)
+fig,ax = plt.subplots(1,2)
+ax[0].matshow(b.reshape(1080,1920))
+ax[1].matshow(c)
+plt.tight_layout(True)
+plt.savefig("compare_fixkmsgrab.png")
 plt.show()
+
