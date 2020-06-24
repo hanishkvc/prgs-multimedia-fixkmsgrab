@@ -31,11 +31,13 @@ b10=b.reshape(tRows,HSET)
 nHSets = int(1920/HSET)
 rowContinue = nHSets*VSET
 c=np.zeros((tCols*VSET,nHSets*HSET))
-for x in range(0,nHSets):
-  for y in range(0,tCols):
-    i= y*rowContinue
+for y in range(0,tCols):
+  for x in range(0,nHSets):
+    i= (y*rowContinue)+x*VSET
     j= y*VSET
-    print(y,i,j)
+    print(x,y,i,j)
+    if (i >= tRows):
+      continue
     c[j:j+VSET,x*HSET:x*HSET+HSET]=b10[i:i+VSET,:]
 
 plt.matshow(c)
