@@ -40,7 +40,10 @@ for y in range(0,tCols):
       continue
     c[j:j+VSET,x*HSET:x*HSET+HSET]=b10[i:i+VSET,:]
 
-fig,ax = plt.subplots(1,2)
+ar = 1920*2/1080
+fh = 10
+fw = int(fh*ar+1)
+fig,ax = plt.subplots(1,2, figsize=(fw,fh))
 ax[0].matshow(b.reshape(1080,1920))
 ax[1].matshow(c)
 plt.tight_layout(True)
