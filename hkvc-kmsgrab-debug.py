@@ -17,6 +17,9 @@ HSET=128
 VSET=8
 
 p=PIL.Image.open("test001.png")
+WIDTH=p.width
+HEIGHT=p.height
+
 t=p.getdata()
 a=np.array(p)
 a=np.array(t)
@@ -28,7 +31,7 @@ b10=b.reshape(tRows,HSET)
 #plt.matshow(b10[0:400,:])
 #plt.show()
 
-nHSets = int(1920/HSET)
+nHSets = int(WIDTH/HSET)
 rowContinue = nHSets*VSET
 c=np.zeros((tCols*VSET,nHSets*HSET))
 for y in range(0,tCols):
@@ -40,11 +43,11 @@ for y in range(0,tCols):
       continue
     c[j:j+VSET,x*HSET:x*HSET+HSET]=b10[i:i+VSET,:]
 
-ar = 1920*2/1080
+ar = WIDTH*2/HEIGHT
 fh = 10
 fw = int(fh*ar+1)
 fig,ax = plt.subplots(1,2, figsize=(fw,fh))
-ax[0].matshow(b.reshape(1080,1920))
+ax[0].matshow(b.reshape(HEIGHT,WIDTH))
 ax[1].matshow(c)
 plt.tight_layout(True)
 plt.savefig("compare_fixkmsgrab.png")
